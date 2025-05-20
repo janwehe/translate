@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th class="col-1">ID</th>
+                <th class="col-7">Text</th>
+                <th class="col-1">Erstellt am</th>
+                <th class="col-2">Übersetzungen</th>
+                <th class="col-1"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for origin in origins %}
+                <tr class="row">
+                    <td class="col-1">{{ origin.id }}</td>
+                    <td class="col-7">{{ origin.txt }}</td>
+                    <td class="col-1">{{ origin.created|date("d.m.Y H:i") }}</td>
+                    <td class="col-2">
+                        {% for transl in origin.translations %}
+                            <img src="{{ asset('img/' ~ transl.language.isoCode ~ '.png') }}" />
+                        {% endfor %}
+                    </td>
+                    <td class="col-1"><a href="{{ path('origin', {'id': origin.id}) }}" class="btn btn-sm btn-info float-left bg-olive">übersetzen</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer clearfix">
+        <a href="{{ path('origin_new') }}" class="btn btn-sm btn-info float-left">Neu</a>
+    </div>
+</div>
+{% endblock %}

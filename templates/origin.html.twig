@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block javascript %}
+    <script src="{{ asset('js/translate.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            {% if origin %}
+                <h1>Übersetzung erstellen</h1>
+                <blockquote class="quote-olive">
+                    <p>{{ origin.txt }}</p>
+                    <small>
+                        <p>{{ origin.created|date("d.m.Y H:i") }}</p>
+                    </small>
+                </blockquote>
+
+                {% if form %}
+                    {{ form_start(form) }}
+                        <div id="translation">
+                            <div class="mb-3">
+                                {{ form_label(form.language) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_widget(form.language) }}
+                            </div>
+                            {{ form_row(form.translation) }}
+                            {{ form_row(form.origin_id) }}
+                            {{ form_row(form.translate) }}
+                            {{ form_row(form.save) }}
+                        </div>
+                {% endif %}
+            {% else %}
+                <p>Kein Text gefunden</p>
+            {% endif %}
+        </div>
+        <div class="card-footer clearfix">
+            <a href="{{ path('list') }}" class="btn btn-sm btn-info float-left">Zurück</a>
+        </div>
+    </div>
+{% endblock %}

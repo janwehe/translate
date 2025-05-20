@@ -1,0 +1,36 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+# Home
+list:
+    path: /
+    controller: App\Controller\ListController::list
+
+# show Origin text
+origin:
+    path: /origin/{id}
+    controller: App\Controller\OriginController::show
+    requirements:
+        id: '\d+'
+
+# new Origin text
+origin_new:
+    path: /origin/new
+    controller: App\Controller\OriginController::new
+
+# load translation
+translation_load:
+    path: /translation/load/{origin_id}/{iso_code}
+    controller: App\Controller\TranslationController::load
+    requirements:
+        origin_id: '\d+'
+
+# translate text
+translation_translate:
+    path: /translation/translate/{origin_id}/{iso_code}
+    controller: App\Controller\TranslationController::translate
+    requirements:
+        origin_id: '\d+'

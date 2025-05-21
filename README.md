@@ -7,6 +7,7 @@ Es handelt sich bei diesem Code um eine Beispiel-Anwendung, die deutsche Texte m
 - MySQL 8.3
 - Javascript
 - [DeepL PHP Library](https://github.com/DeepLcom/deepl-php)
+- [AdminLTE 3](https://adminlte.io/)
 
 ## Übersetzen eines Textes
 ![translate_app2](https://github.com/user-attachments/assets/039b0632-2825-451d-8b12-ad562c6affec)
